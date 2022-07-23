@@ -17,6 +17,9 @@
 /***************************************************************************************************
  * BROWSER POLYFILLS
  */
+(window as any).process = {
+  env: { DEBUG: undefined },
+};
 
 /**
  * By default, zone.js will patch all possible macroTask and DomEvents
@@ -45,8 +48,7 @@
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */
-import 'zone.js';  // Included with Angular CLI.
-
+import 'zone.js'; // Included with Angular CLI.
 
 /***************************************************************************************************
  * APPLICATION IMPORTS

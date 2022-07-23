@@ -6,6 +6,9 @@ export const environment = {
   production: false
 };
 
+export const appName: string = 'P8CQL7R1C3';
+export const apiKey: string = '5daaa435bfa32a00ec391ea62a1f5b90';
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

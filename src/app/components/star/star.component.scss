@@ -1,0 +1,25 @@
+.stars-container {
+  position: relative;
+  display: inline-block;
+  color: transparent;
+  font-size: 25px;
+  margin-top: 10px;
+}
+
+.stars-container:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '★★★★★';
+  color: lightgray;
+}
+
+.stars-container:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '★★★★★';
+  color: gold;
+  width: var(--star-width);
+  overflow: hidden;
+}

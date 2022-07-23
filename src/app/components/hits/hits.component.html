@@ -1,0 +1,18 @@
+<ais-hits>
+  <ng-template let-hits="hits">
+    <ol class="ais-Hits-list">
+      <li *ngFor="let hit of hits" class="ais-Hits-item">
+        <img src="{{hit.image_url}}" alt="{{hit.name}}" align="left" />
+        <h1>{{hit.stars_count}}</h1>
+        <app-star [rating]="hit.stars_count"></app-star>
+        <div class="hit-name">
+          <ais-highlight attribute="name" [hit]="hit"></ais-highlight>
+        </div>
+        <div class="hit-description">
+          <ais-highlight attribute="address" [hit]="hit"></ais-highlight>
+        </div>
+        <div class="hit-price">${{hit.postal_code}}</div>
+      </li>
+    </ol>
+  </ng-template>
+</ais-hits>
