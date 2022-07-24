@@ -19,7 +19,7 @@ export class StarComponent implements OnInit, OnChanges, AfterViewInit {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes) {
       this.rating = changes["rating"]?.currentValue ?? 0;
-      this.stars = this.sanitizer.bypassSecurityTrustStyle('--star-width:' + this.rating * 20 + '%')
+      this.stars = this.sanitizer.bypassSecurityTrustStyle('--star-width:' + (this.rating * 20) + '%')
     }
   }
 
