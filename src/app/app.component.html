@@ -1,16 +1,6 @@
-<app-star [rating]="3"></app-star>
-
-<!-- <div class="ais-InstantSearch">
-  <h1>Restaurants</h1>
-  <ais-instantsearch [config]="config">
-    <div class="left-panel">
-      <app-refinements></app-refinements>
-      <ais-configure [searchParameters]="{ hitsPerPage: 8 }"></ais-configure>
-    </div>
-    <div class="right-panel">
-      <app-search-box></app-search-box>
-      <app-hits></app-hits>
-      <ais-pagination></ais-pagination>
-    </div>
-  </ais-instantsearch>
-</div> -->
+<app-instant-search id="top" [config]="config"></app-instant-search>
+<button class="top" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+  <a href="#top">
+    <mat-icon>arrow_upward</mat-icon>
+  </a>
+</button>

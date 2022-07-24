@@ -1,0 +1,25 @@
+@use './mixin' as *;
+@use './colors' as *;
+.ais-Menu {
+  .ais-Menu-item--selected {
+    background-color: $hover-color !important;
+  }
+  .ais-Menu-item {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 5px;
+  }
+  .ais-Menu-link {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.ais-Menu-showMore {
+  @include button;
+  color: #fff;
+}
+
+.ais-Panel-header {
+  padding-left: 10px;
+}

@@ -1,0 +1,15 @@
+.panels {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  margin: 0 auto;
+  width: 80%;
+  column-gap: 20px;
+  // overflow: hidden;
+  &__left {
+    position: sticky;
+    align-self: flex-start;
+    top: 0;
+    margin-top: 50px;
+  }
+}

@@ -1,0 +1,7 @@
+<h1 mat-dialog-title>{{data.title}}?</h1>
+<div mat-dialog-content>{{data.content}}</div>
+<div mat-dialog-actions>
+  <button *ngIf="data.isRemove" mat-button mat-dialog-close>Delete</button>
+  <button *ngIf="data.isAdd" mat-button mat-dialog-close>Add</button>
+
+</div>

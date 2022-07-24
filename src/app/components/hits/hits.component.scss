@@ -1,0 +1,53 @@
+@use '../../../assets/styles/mixin' as *;
+img {
+  object-fit: cover;
+  height: 207px;
+  width: 207px;
+  display: block;
+  box-sizing: border-box;
+  font-size: 1.6rem;
+  display: grid;
+  place-items: center;
+  min-height: 200px;
+  border: 1px solid;
+  padding: 1rem;
+  border-image: linear-gradient(45deg, #3c4fe0, greenyellow) 1;
+}
+
+.restaurant-list {
+  display: flex;
+  border-bottom: 1px solid #e6e6e6;
+  column-gap: 20px;
+}
+
+section {
+  margin-top: 20px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.restaurant-list__stars {
+  display: flex;
+}
+
+.restaurant-list__content {
+  align-self: center;
+}
+
+.restaurant-list__show {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.restaurant-list__action {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  button {
+    background-color: lightgray;
+    &:last-child {
+      margin-left: 10px;
+    }
+  }
+}

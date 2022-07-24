@@ -1,0 +1,14 @@
+<div>
+  <h1 class="text-align-center mt-10">Restaurants</h1>
+  <ais-instantsearch class="panels" [config]="config">
+    <aside class="panels__left">
+      <app-refinements></app-refinements>
+      <ais-configure [searchParameters]="{ hitsPerPage: 8 }"></ais-configure>
+    </aside>
+    <main class="panels__right">
+      <app-search-box></app-search-box>
+      <app-hits></app-hits>
+      <!-- <ais-pagination></ais-pagination> -->
+    </main>
+  </ais-instantsearch>
+</div>
