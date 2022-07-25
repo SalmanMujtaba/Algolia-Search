@@ -1,8 +1,7 @@
 import { apiKey, appName } from './../environments/environment';
 
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import algoliasearch from 'algoliasearch/lite';
+import algoliasearch from 'algoliasearch';
 
 @Component({
   selector: 'app-root',
@@ -13,19 +12,31 @@ export class AppComponent {
   title = 'algolia';
   config: any;
 
-  constructor(protected http: HttpClient) {
+  constructor() {
     this.config = {
       indexName: 'restaurants',
       searchClient: algoliasearch(
         appName,
         apiKey
       )
-    };
+    }
 
 
-    const client = algoliasearch(appName, apiKey);
 
-    // const index = client.initIndex('restaurants');
+    // const objects = [{
+    //   firstname: 'Jimmie',
+    //   lastname: 'Barninger',
+    //   objectID: 'myID1'
+    // }, {
+    //   firstname: 'Warren',
+    //   lastname: 'Speach',
+    //   objectID: 'myID2'
+    // }];
+
+    // index.saveObjects(objects).then((objectIDs: any) => {
+    //   console.log(objectIDs);
+    // });
+    // const index = client.initIndex('restaurants2');
     // this.http.get<any>('https://raw.githubusercontent.com/Jerska/front-end-test/master/dataset/restaurants.json').subscribe(data => {
     //   console.log(data);
     //   index.saveObjects(data, {
@@ -43,10 +54,6 @@ export class AppComponent {
     //       autoGenerateObjectIDIfNotExist: true
     //     })
     //   })
-
-  }
-
-  navigateToTop() {
 
   }
 }

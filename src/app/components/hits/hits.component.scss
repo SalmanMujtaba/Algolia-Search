@@ -30,7 +30,7 @@ section {
 }
 
 .restaurant-list__content {
-  align-self: center;
+  flex: 1;
 }
 
 .restaurant-list__show {
@@ -43,11 +43,13 @@ section {
 }
 
 .restaurant-list__action {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
+  // position: absolute;
+  // right: 20px;
+  // bottom: 20px;
+  text-align: right;
+  margin-top: 20px;
   button {
-    background-color: lightgray;
+    // background-color: lightgray;
     &:last-child {
       margin-left: 10px;
     }

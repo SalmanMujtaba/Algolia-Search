@@ -14,6 +14,7 @@ import { NgaisModule } from './modules/ngais.module';
 import { RefinementsComponent } from './components/refinements/refinements.component';
 import { SearchBoxComponent } from './components/search-box/search-box.component';
 import { StarComponent } from './components/star/star.component';
+import { StarRatingMenuComponent } from './components/star-rating-menu/star-rating-menu.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { StarComponent } from './components/star/star.component';
     StarComponent,
     InstantSearchComponent,
     LoadingIndicatorComponent,
-    DialogComponent
+    DialogComponent,
+    StarRatingMenuComponent,
+    StarRatingMenuComponent
 
   ],
   imports: [

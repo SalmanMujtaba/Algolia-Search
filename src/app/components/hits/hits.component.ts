@@ -38,5 +38,30 @@ export class HitsComponent implements OnInit {
 
   delete(event: Hit) {
     console.log(event);
+    let dialog = this.dialog.open(DialogComponent, {
+      // width: '250px',
+      data: {
+        hit: event,
+        isRemove: true,
+        title: "Are you sure you want to delete this restaurant",
+        content: ""
+      }
+    });
+    dialog.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    }
+    );
+  }
+
+  transformData(items: Array<Hit>) {
+    return items.map(item => {
+      return {
+        ...item,
+        ...{
+          rating: item["stars_count"]?.toFixed(0),
+        }
+      };
+    });
+
   }
 }

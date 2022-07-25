@@ -6,6 +6,7 @@ import {
   NgAisInfiniteHitsModule,
   NgAisMenuModule,
   NgAisPanelModule,
+  NgAisRatingMenuModule,
   NgAisSearchBoxModule
 } from 'angular-instantsearch';
 
@@ -25,6 +26,8 @@ import { NgModule } from '@angular/core';
     NgAisHighlightModule,
     NgAisInfiniteHitsModule,
     NgAisMenuModule,
+    NgAisRatingMenuModule,
+    NgAisRatingMenuModule,
     NgAisPanelModule]
 })
 export class NgaisModule { }

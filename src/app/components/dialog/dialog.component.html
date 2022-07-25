@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>{{data.title}}?</h1>
 <div mat-dialog-content>{{data.content}}</div>
 <div mat-dialog-actions>
-  <button class="primary-button" *ngIf="data.isRemove" mat-dialog-close>Delete</button>
-  <button class="primary-button" *ngIf="data.isAdd" mat-dialog-close>Add</button>
-  <button mat-button mat-dialog-close>Cancel</button>
+  <button (click)=dialogRef.close(deleteArgument) class="primary-button" *ngIf="data.isRemove" mat-dialog-close>{{deleteButtonLabel}}</button>
+  <button (click)=dialogRef.close(addArgument) class="primary-button" *ngIf="data.isAdd" mat-dialog-close>{{addButtonLabel}}</button>
+  <button (click)=dialogRef.close(cancelArgument) mat-button mat-dialog-close>{{cancelButtonLabel}}</button>
 </div>
