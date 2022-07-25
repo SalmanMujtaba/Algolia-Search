@@ -1,14 +1,13 @@
 @use '../../../assets/styles/mixin' as *;
 img {
   object-fit: cover;
-  height: 207px;
-  width: 207px;
+  height: 150px;
+  width: 150px;
   display: block;
   box-sizing: border-box;
   font-size: 1.6rem;
   display: grid;
   place-items: center;
-  min-height: 200px;
   border: 1px solid;
   padding: 1rem;
   border-image: linear-gradient(45deg, #3c4fe0, greenyellow) 1;
@@ -38,6 +37,9 @@ section {
   margin-top: 20px;
   width: 100%;
   text-align: center;
+  button {
+    width: 100px
+  }
 }
 
 .restaurant-list__action {

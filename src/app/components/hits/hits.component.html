@@ -2,32 +2,36 @@
   <ng-template let-hits="hits" let-results="results" let-refineNext="showMore">
     <section class="restaurant-list" *ngFor="let hit of hits; let i = index">
       <img loading="lazy" src="{{hit.image_url}}" alt="{{hit.name}}" alt="restaurant image {{i}}" />
-      <div class="restaurant-list__content fw-lighter">
+      <div class="restaurant-list__content">
         <h2>
           <ais-highlight attribute="name" [hit]="hit"></ais-highlight>
         </h2>
-        <div class="restaurant-list__stars">
+        <div class="restaurant-list__stars fw-300 dark-gray">
           <app-star [rating]="hit.stars_count"></app-star>
-          <div>({{hit.reviews_count}})</div>
+          <div class="ml-5">({{hit.reviews_count}} <span>{{reviews}}</span>)</div>
         </div>
-        <div>
-          <ais-highlight attribute="address" [hit]="hit"></ais-highlight>
+        <div class="restaurant-list__ fw-300 dark-gray">
+          <span>{{hit.food_type}}</span> |
+          <span>
+            <ais-highlight attribute="address" [hit]="hit"></ais-highlight>
+          </span> |
+          <span>{{hit.price_range}}</span>
+
         </div>
-        <div>{{hit.price_range}}</div>
+
       </div>
       <div class="restaurant-list__action">
-        <button (click)="delete(hit)" class="restaurant-list__delete" mat-mini-fab aria-label="Example icon button with a delete icon">
+        <button (click)="delete(hit)" class="restaurant-list__delete" mat-icon-button aria-label="Example icon button with a delete icon">
           <mat-icon>delete</mat-icon>
-        </button>
-        <button (click)="add(hit)" class="restaurant-list__delete" mat-mini-fab aria-label="Example icon button with a delete icon">
-          <mat-icon>add</mat-icon>
         </button>
       </div>
 
     </section>
-    <button class="restaurant-list__show" mat-icon-button (click)="refineNext($event)" aria-label="Example icon button with a vertical three dot icon">
-      Show More <mat-icon>expand_more</mat-icon>
-    </button>
+    <div class="restaurant-list__show">
+      <button mat-icon-button (click)="refineNext($event)" aria-label="Example icon button with a vertical three dot icon">
+        Show More <mat-icon>expand_more</mat-icon>
+      </button>
+    </div>
   </ng-template>
 </ais-infinite-hits>
 

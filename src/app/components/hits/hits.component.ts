@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { APP_CONSTANTS } from './../../constants/app-constants';
 import { DialogComponent } from './../dialog/dialog.component';
 import { Hit } from 'angular-instantsearch/instantsearch/instantsearch';
 import { MatDialog } from '@angular/material/dialog';
@@ -10,8 +11,10 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./hits.component.scss']
 })
 export class HitsComponent implements OnInit {
-
-  constructor(public dialog: MatDialog) { }
+  reviews: string;
+  constructor(public dialog: MatDialog) {
+    this.reviews = APP_CONSTANTS.get("REVIEWS_LABEL") as string;
+  }
 
   ngOnInit(): void {
   }
@@ -21,7 +24,10 @@ export class HitsComponent implements OnInit {
     let dialog = this.dialog.open(DialogComponent, {
       // width: '250px',
       data: {
-        hit: event
+        hit: event,
+        isAdd: true,
+        title: "Are you sure you want to add this item to the restaurants",
+        content: ""
       }
     });
     dialog.afterClosed().subscribe(result => {

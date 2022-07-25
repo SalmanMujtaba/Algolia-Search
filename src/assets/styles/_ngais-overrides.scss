@@ -3,6 +3,7 @@
 .ais-Menu {
   .ais-Menu-item--selected {
     background-color: $hover-color !important;
+    border-radius: 20px;
   }
   .ais-Menu-item {
     padding-left: 10px;
@@ -15,11 +16,18 @@
   }
 }
 
-.ais-Menu-showMore {
+.ais-Menu-showMore,
+.primary-button {
   @include button;
   color: #fff;
 }
 
 .ais-Panel-header {
   padding-left: 10px;
+}
+
+.ais-SearchBox {
+  position: sticky;
+  top: 5px;
+  z-index: 1;
 }

@@ -23,7 +23,7 @@ export class AppComponent {
     };
 
 
-    // const client = algoliasearch('P8CQL7R1C3', '5daaa435bfa32a00ec391ea62a1f5b90')
+    const client = algoliasearch(appName, apiKey);
 
     // const index = client.initIndex('restaurants');
     // this.http.get<any>('https://raw.githubusercontent.com/Jerska/front-end-test/master/dataset/restaurants.json').subscribe(data => {
