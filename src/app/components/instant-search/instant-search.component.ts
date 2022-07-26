@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-instant-search',
@@ -7,9 +7,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class InstantSearchComponent implements OnInit {
   @Input() config: any;
+  @Output() toggleSpinner = new EventEmitter<boolean>();
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  toggleSpinnerMethod(toggle: any) {
+    this.toggleSpinner.emit(toggle);
+  }
 }

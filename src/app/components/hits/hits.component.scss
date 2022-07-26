@@ -49,9 +49,6 @@ section {
   text-align: right;
   margin-top: 20px;
   button {
-    // background-color: lightgray;
-    &:last-child {
-      margin-left: 10px;
-    }
+    background-color: lightgray;
   }
 }

@@ -1,6 +1,6 @@
-<ais-infinite-hits [transformItems]="transformData">
+<ais-infinite-hits tabindex="0" [transformItems]="transformData">
   <ng-template let-hits="hits" let-results="results" let-refineNext="showMore">
-    <section class="restaurant-list" *ngFor="let hit of hits; let i = index">
+    <section class="restaurant-list" *ngFor="let hit of hits; let i = index;trackBy:trackByIdentity">
       <img loading="lazy" src="{{hit.image_url}}" alt="{{hit.name}}" alt="restaurant image {{i}}" />
       <div class="restaurant-list__content">
         <h2>
@@ -19,14 +19,9 @@
 
         </div>
         <div class="restaurant-list__action">
-          <button matTooltip="Delete this row" (click)="delete(hit)" class="restaurant-list__delete" mat-mini-fab color="primary" aria-label="Example icon button with a delete icon">
+          <button matTooltip="Delete this row" (click)="delete(hit)" class="restaurant-list__delete" mat-mini-fab aria-label="Example icon button with a delete icon">
             <mat-icon>delete</mat-icon>
           </button>
-
-          <!-- <button matTooltip="Move to top" class="top" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
-            <mat-icon>arrow_upward</mat-icon>
-          </button> -->
-
         </div>
       </div>
 

@@ -15,6 +15,7 @@ import { RefinementsComponent } from './components/refinements/refinements.compo
 import { SearchBoxComponent } from './components/search-box/search-box.component';
 import { StarComponent } from './components/star/star.component';
 import { StarRatingMenuComponent } from './components/star-rating-menu/star-rating-menu.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { StarRatingMenuComponent } from './components/star-rating-menu/star-rati
     LoadingIndicatorComponent,
     DialogComponent,
     StarRatingMenuComponent,
-    StarRatingMenuComponent
+    StarRatingMenuComponent,
+    SpinnerComponent
 
   ],
   imports: [

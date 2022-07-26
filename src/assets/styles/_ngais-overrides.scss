@@ -4,11 +4,18 @@
   .ais-Menu-item--selected {
     background-color: $hover-color !important;
     border-radius: 20px;
+    text-decoration: underline;
   }
   .ais-Menu-item {
     padding-left: 10px;
     padding-right: 10px;
     margin-bottom: 5px;
+    // &:hover,
+    &:focus,
+    &:active {
+      background-color: $hover-color !important;
+      border-radius: 20px;
+    }
   }
   .ais-Menu-link {
     display: flex;
@@ -23,7 +30,7 @@
 }
 
 .ais-Panel-header {
-  padding-left: 10px;
+  // padding-left: 10px;
 }
 
 .ais-SearchBox {

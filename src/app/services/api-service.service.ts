@@ -3,6 +3,7 @@ import { apiKey, appName } from './../../environments/environment';
 
 import { APP_CONSTANTS } from './../constants/app-constants';
 import { Injectable } from '@angular/core';
+import { SpinnerService } from './spinner.service';
 import algoliasearch from 'algoliasearch';
 
 @Injectable({
@@ -10,7 +11,7 @@ import algoliasearch from 'algoliasearch';
 })
 export class ApiServiceService {
   index: any;
-  constructor() {
+  constructor(protected spinnerService: SpinnerService) {
     this.index = algoliasearch(appName, apiKey)?.initIndex(APP_CONSTANTS.get("INDEX_NAME") as string);
   }
 
@@ -19,10 +20,11 @@ export class ApiServiceService {
   }
 
   deleteObject(objectID: string): Observable<any> {
-    if (objectID) {
-      return of(this.index.deleteObject(objectID).wait());
-
+    this.spinnerService.showSpinner();
+    if (objectID && this.index) {
+      return of(this.index.deleteObject(objectID));
     }
     return of("Object ID is empty");
   }
+
 }

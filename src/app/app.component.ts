@@ -11,6 +11,7 @@ import algoliasearch from 'algoliasearch';
 export class AppComponent {
   title = 'algolia';
   config: any;
+  showSpinner: boolean = false;
 
   constructor() {
     this.config = {

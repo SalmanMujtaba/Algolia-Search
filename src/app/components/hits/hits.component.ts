@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { APP_CONSTANTS } from './../../constants/app-constants';
+import { ApiServiceService } from './../../services/api-service.service';
 import { DialogComponent } from './../dialog/dialog.component';
 import { Hit } from 'angular-instantsearch/instantsearch/instantsearch';
 import { MatDialog } from '@angular/material/dialog';
@@ -12,15 +13,18 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class HitsComponent implements OnInit {
   reviews: string;
-  constructor(public dialog: MatDialog) {
+  current: Hit | null;
+
+  constructor(public dialog: MatDialog, protected apiService: ApiServiceService) {
     this.reviews = APP_CONSTANTS.get("REVIEWS_LABEL") as string;
+    this.current = null;
   }
 
   ngOnInit(): void {
   }
 
   add(event: Hit) {
-    console.log(event);
+    this.current = event;
     let dialog = this.dialog.open(DialogComponent, {
       // width: '250px',
       data: {
@@ -37,7 +41,7 @@ export class HitsComponent implements OnInit {
   }
 
   delete(event: Hit) {
-    console.log(event);
+    this.current = event;
     let dialog = this.dialog.open(DialogComponent, {
       // width: '250px',
       data: {
@@ -48,9 +52,19 @@ export class HitsComponent implements OnInit {
       }
     });
     dialog.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      if (result && result === APP_CONSTANTS.get("DELETE_RESTAURANT")) {
+        this.apiService.deleteObject(this.current!.objectID).subscribe({
+          next: (v) => console.log(v),
+          error: (e) => console.error(e),
+          complete: () => console.info('complete')
+        });
+      }
     }
     );
+  }
+
+  trackByIdentity(index: number, item: Hit): number {
+    return +item.objectID;
   }
 
   transformData(items: Array<Hit>) {

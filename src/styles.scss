@@ -3,6 +3,7 @@
 @use './assets/styles/mixin' as *;
 @use './assets/styles/reset' as *;
 @use './assets/styles/ngais-overrides' as *;
+@use './assets/styles/colors' as *;
 html,
 body {
   height: 100%;
@@ -26,6 +27,15 @@ a {
 h1,
 h2 {
   margin-top: unset !important;
+}
+
+header {
+  background-color: $primary-color;
+  padding: 10px;
+  h1 {
+    margin-bottom: 0 !important;
+  }
+  margin-bottom: 20px;
 }
 
 .text-align-center {
