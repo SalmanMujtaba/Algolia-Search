@@ -68,6 +68,11 @@
   z-index: 1;
 }
 
+.ais-RatingMenu-starIcon {
+  height: 20px;
+  width: 20px;
+}
+
 .ais-RatingMenu-starIcon--full {
   fill: gold;
 }
@@ -79,4 +84,19 @@
 .ais-Menu-count {
   border: unset;
   background: unset;
+}
+
+.ais-RatingMenu-label {
+  width: 20%;
+  font-size: 12px !important;
+  color: darkslategray;
+}
+
+.ais-RatingMenu-item {
+  transition: transform 100ms ease-in-out;
+  will-change: transform;
+}
+
+.ais-RatingMenu-item--selected {
+  transform: scale(1.2);
 }

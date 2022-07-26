@@ -15,7 +15,7 @@ import { SpinnerService } from './../../services/spinner.service';
 export class HitsComponent implements OnInit {
   reviews: string;
   current: Hit | null;
-
+  deletedIDs: Array<string> = [];
   constructor(public dialog: MatDialog, protected apiService: ApiServiceService, protected spinnerService: SpinnerService) {
     this.reviews = APP_CONSTANTS.get("REVIEWS_LABEL") as string;
     this.current = null;
@@ -58,7 +58,7 @@ export class HitsComponent implements OnInit {
         this.apiService.deleteObject(this.current!.objectID).subscribe({
           next: (v) => this.remove(allHits),
           error: (e) => console.error(e),
-          complete: () => this.spinnerService.hideSpinner()
+          complete: () => { this.spinnerService.hideSpinner(); this.deletedIDs.push(this.current!.objectID); }
         });
       }
     }
