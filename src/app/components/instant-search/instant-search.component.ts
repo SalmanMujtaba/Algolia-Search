@@ -13,7 +13,6 @@ export class InstantSearchComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  toggleSpinnerMethod(toggle: any) {
-    this.toggleSpinner.emit(toggle);
+  add() {
   }
 }

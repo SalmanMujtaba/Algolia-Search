@@ -47,6 +47,12 @@
   color: #fff;
 }
 
+.ais-Menu-showMore {
+  &:focus {
+    background-image: unset;
+  }
+}
+
 .ais-Panel {
   margin-bottom: 20px;
 }
@@ -62,7 +68,7 @@
 }
 
 .ais-RatingMenu-starIcon--empty {
-  fill: lightgray;
+  fill: darkgray;
 }
 
 .ais-Menu-count {

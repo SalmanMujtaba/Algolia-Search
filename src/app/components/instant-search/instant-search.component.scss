@@ -1,15 +1,27 @@
 .panels {
   display: grid;
   justify-content: center;
-  grid-template-columns: minmax(200px, 260px) minmax(500px, 690px);
-  margin-left: 20px;
-  margin-right: 20px;
-  column-gap: 20px;
+  grid-template-columns: minmax(12.5rem, 16.25rem) minmax(31.25rem, 43.125rem);
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+  column-gap: 1.25rem;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
   &__left {
     position: sticky;
-    padding: 20px;
+    padding: 1.25rem;
     align-self: flex-start;
     top: 0;
-    margin-top: 50px;
+    margin-top: 3.125rem;
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+  }
+  &__add {
+    display: flex;
+    app-search-box {
+      flex: 1;
+    }
   }
 }

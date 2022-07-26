@@ -1,32 +1,44 @@
   @use '../../../assets/styles/mixin' as *;
   img {
     object-fit: cover;
-    height: 150px;
-    width: 150px;
+    height: 9.375rem;
+    width: 9.375rem;
     display: block;
     box-sizing: border-box;
     font-size: 1.6rem;
     display: grid;
     place-items: center;
-    border: 1px solid;
+    border: 0.0625rem solid;
     padding: 1rem;
     border-image: linear-gradient(45deg, #3c4fe0, greenyellow) 1;
   }
   
   .restaurant-list {
     display: flex;
-    border-bottom: 1px solid #e6e6e6;
-    column-gap: 20px;
+    border-bottom: 0.0625rem solid #e6e6e6;
+    column-gap: 1.25rem;
+    @media screen and (max-width: 25.9375rem) {
+      flex-direction: column;
+      align-items: center;
+      img {
+        height: 12.5rem;
+        width: 12.5rem;
+      }
+    }
   }
   
   section {
-    margin-top: 20px;
-    padding-bottom: 10px;
+    margin-top: 1.25rem;
+    padding-bottom: 0.625rem;
     position: relative;
   }
   
   .restaurant-list__stars {
     display: flex;
+    @media screen and (max-width: 415px) {
+      justify-content: center;
+      align-items: center;
+    }
   }
   
   .restaurant-list__content {
@@ -34,31 +46,37 @@
     h2 {
       max-width: 90%;
     }
+    @media screen and (max-width: 415px) {
+      text-align: center;
+      h2 {
+        max-width: unset;
+      }
+    }
   }
   
   .restaurant-list__show {
-    margin-top: 20px;
+    margin-top: 1.25rem;
     width: 100%;
     text-align: center;
     button {
-      width: 100px;
+      width: 6.25rem;
     }
   }
   
   .restaurant-list__action {
     text-align: right;
-    margin-top: 20px;
-    @media screen and (max-width: 1024px) {
+    margin-top: 1.25rem;
+    @media screen and (max-width: 768px) {
       text-align: unset;
     }
     button {
-      height: 25px;
-      width: 25px;
-      font-size: 15px;
+      height: 1.5625rem;
+      width: 1.5625rem;
+      font-size: 0.9375rem;
       mat-icon {
-        height: 15px;
-        width: 15px;
-        font-size: 15px;
+        height: 0.9375rem;
+        width: 0.9375rem;
+        font-size: 0.9375rem;
       }
       background-color: lightgray;
       transition: transform 0.1s ease-in-out;
@@ -73,5 +91,5 @@
   .restaurant-no-results {
     display: grid;
     place-content: center;
-    margin-top: 20px;
+    margin-top: 1.25rem;
   }
