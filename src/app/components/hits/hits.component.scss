@@ -1,54 +1,71 @@
-@use '../../../assets/styles/mixin' as *;
-img {
-  object-fit: cover;
-  height: 150px;
-  width: 150px;
-  display: block;
-  box-sizing: border-box;
-  font-size: 1.6rem;
-  display: grid;
-  place-items: center;
-  border: 1px solid;
-  padding: 1rem;
-  border-image: linear-gradient(45deg, #3c4fe0, greenyellow) 1;
-}
-
-.restaurant-list {
-  display: flex;
-  border-bottom: 1px solid #e6e6e6;
-  column-gap: 20px;
-}
-
-section {
-  margin-top: 20px;
-  padding-bottom: 10px;
-  position: relative;
-}
-
-.restaurant-list__stars {
-  display: flex;
-}
-
-.restaurant-list__content {
-  flex: 1;
-}
-
-.restaurant-list__show {
-  margin-top: 20px;
-  width: 100%;
-  text-align: center;
-  button {
-    width: 100px
+  @use '../../../assets/styles/mixin' as *;
+  img {
+    object-fit: cover;
+    height: 150px;
+    width: 150px;
+    display: block;
+    box-sizing: border-box;
+    font-size: 1.6rem;
+    display: grid;
+    place-items: center;
+    border: 1px solid;
+    padding: 1rem;
+    border-image: linear-gradient(45deg, #3c4fe0, greenyellow) 1;
   }
-}
-
-.restaurant-list__action {
-  // position: absolute;
-  // right: 20px;
-  // bottom: 20px;
-  text-align: right;
-  margin-top: 20px;
-  button {
-    background-color: lightgray;
+  
+  .restaurant-list {
+    display: flex;
+    border-bottom: 1px solid #e6e6e6;
+    column-gap: 20px;
   }
-}
+  
+  section {
+    margin-top: 20px;
+    padding-bottom: 10px;
+    position: relative;
+  }
+  
+  .restaurant-list__stars {
+    display: flex;
+  }
+  
+  .restaurant-list__content {
+    flex: 1;
+    h2 {
+      max-width: 90%;
+    }
+  }
+  
+  .restaurant-list__show {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+    button {
+      width: 100px;
+    }
+  }
+  
+  .restaurant-list__action {
+    text-align: right;
+    margin-top: 20px;
+    @media screen and (max-width: 1024px) {
+      text-align: unset;
+    }
+    button {
+      height: 25px;
+      width: 25px;
+      font-size: 15px;
+      mat-icon {
+        height: 15px;
+        width: 15px;
+        font-size: 15px;
+      }
+      background-color: lightgray;
+      transition: transform 0.1s ease-in-out;
+      will-change: transform;
+      &:hover,
+      &:focus {
+        transform: scale(1.2);
+      }
+    }
+  }

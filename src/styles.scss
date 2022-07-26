@@ -50,6 +50,14 @@ header {
   margin-left: 10px;
 }
 
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.hide {
+  display: block;
+}
+
 .ml-5 {
   margin-left: 5px;
 }
@@ -58,8 +66,24 @@ header {
   color: #fff;
 }
 
+.ais-SearchBox-form:hover {
+  &:before {
+    transform: rotate(80deg);
+  }
+}
+
+.ais-SearchBox-form:hover:after {
+  &:before {
+    transform: rotate(-80deg);
+  }
+}
+
 input {
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 0px 1px 0px, rgba(0, 0, 0, 0.16) 0px 2px 3px !important;
+  box-shadow: 0 4px 11px -2px rgb(37 44 97 / 15%), 0 1px 3px 0 rgb(93 100 148 / 20%)!important;
+  &:hover,
+  &:focus {
+    box-shadow: 0 8px 22px 0 rgb(37 44 97 / 15%), 0 4px 6px 0 rgb(93 100 148 / 20%) !important;
+  }
 }
 
 .fw-300 {
@@ -68,4 +92,15 @@ input {
 
 .dark-gray {
   color: darkslategray;
+}
+
+.mat-divider {
+  margin-bottom: 15px !important;
+}
+
+.restaurant-list__action {
+  .mat-button-wrapper {
+    line-height: 15px !important;
+    transform: translateY(-6px);
+  }
 }

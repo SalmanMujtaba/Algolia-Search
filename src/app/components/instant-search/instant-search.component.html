@@ -6,11 +6,12 @@
     <aside class="panels__left">
       <app-refinements></app-refinements>
       <ais-configure [searchParameters]="{ hitsPerPage: 8 }"></ais-configure>
-      <app-star-rating-menu></app-star-rating-menu>
+      <mat-divider></mat-divider>
+      <app-star-rating-menu class="mt-10"></app-star-rating-menu>
     </aside>
     <main class="panels__right">
       <app-search-box></app-search-box>
-      <app-hits (toggleSpinner)="toggleSpinnerMethod($event)"></app-hits>
+      <app-hits></app-hits>
       <!-- <ais-pagination></ais-pagination> -->
     </main>
   </ais-instantsearch>

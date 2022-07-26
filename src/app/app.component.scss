@@ -5,4 +5,10 @@
   a {
     color: #fff;
   }
+  transition: transform 0.1s ease-in-out;
+  will-change: transform;
+  &:hover,
+  &:focus {
+    transform: scale(1.2);
+  }
 }

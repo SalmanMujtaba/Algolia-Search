@@ -4,22 +4,40 @@
   .ais-Menu-item--selected {
     background-color: $hover-color !important;
     border-radius: 20px;
-    text-decoration: underline;
   }
   .ais-Menu-item {
     padding-left: 10px;
     padding-right: 10px;
     margin-bottom: 5px;
-    // &:hover,
+    transition: transform 100ms ease-in-out;
+    will-change: transform;
+    &:hover,
     &:focus,
     &:active {
       background-color: $hover-color !important;
       border-radius: 20px;
+      transform: translateX(5px);
+    }
+    &:hover:after {
+      transform: translateX(0);
     }
   }
   .ais-Menu-link {
     display: flex;
     justify-content: space-between;
+  }
+}
+
+.ais-RatingMenu-link {
+  transition: transform 100ms ease-in-out;
+  will-change: transform;
+  &:hover,
+  &:focus,
+  &:active {
+    transform: translateX(5px);
+  }
+  &:hover:after {
+    transform: translateX(0);
   }
 }
 
@@ -29,8 +47,8 @@
   color: #fff;
 }
 
-.ais-Panel-header {
-  // padding-left: 10px;
+.ais-Panel {
+  margin-bottom: 20px;
 }
 
 .ais-SearchBox {
@@ -45,4 +63,9 @@
 
 .ais-RatingMenu-starIcon--empty {
   fill: lightgray;
+}
+
+.ais-Menu-count {
+  border: unset;
+  background: unset;
 }
