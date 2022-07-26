@@ -1,6 +1,5 @@
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable, OnDestroy } from '@angular/core';
-
-import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +19,10 @@ export class SpinnerService implements OnDestroy {
 
   ngOnDestroy(): void {
     this.spinner$.unsubscribe();
+  }
+
+  getSpinner(): Observable<boolean> {
+    return this.spinner$;
   }
 
 }

@@ -1,5 +1,5 @@
 export const APP_CONSTANTS = new Map<string, string>([
-  ["SEARCH_BOX_PLACEHOLDER", "Search for a restautant by name, cuisine, or location"],
+  ["SEARCH_BOX_PLACEHOLDER", "Search for a restautant by Name, Cuisine, or Location"],
   ["REVIEWS_LABEL", "reviews"],
   ["STAR_RATING_LABEL", "& more"],
   ["DELETE_RESTAURANT", "delete"],

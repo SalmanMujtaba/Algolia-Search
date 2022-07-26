@@ -69,3 +69,9 @@
       }
     }
   }
+  
+  .restaurant-no-results {
+    display: grid;
+    place-content: center;
+    margin-top: 20px;
+  }
