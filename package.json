@@ -20,6 +20,8 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "@cloudinary/ng": "^1.4.1",
+    "@cloudinary/url-gen": "^1.8.0",
     "algoliasearch": "^4.14.1",
     "angular-instantsearch": "^4.2.1",
     "rxjs": "~7.5.0",

@@ -1,5 +1,5 @@
 import { Observable, of } from 'rxjs';
-import { apiKey, appName } from './../../environments/environment';
+import { algoliaApiKey, algoliaAppName } from './../../environments/environment';
 
 import { APP_CONSTANTS } from './../constants/app-constants';
 import { Injectable } from '@angular/core';
@@ -12,7 +12,7 @@ import algoliasearch from 'algoliasearch';
 export class ApiServiceService {
   index: any;
   constructor(protected spinnerService: SpinnerService) {
-    this.index = algoliasearch(appName, apiKey)?.initIndex(APP_CONSTANTS.get("INDEX_NAME") as string);
+    this.index = algoliasearch(algoliaAppName, algoliaApiKey)?.initIndex(APP_CONSTANTS.get("INDEX_NAME") as string);
   }
 
   saveObject(object: any) {

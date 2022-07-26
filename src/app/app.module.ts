@@ -2,6 +2,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { CloudinaryModule } from '@cloudinary/ng';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { HitsComponent } from './components/hits/hits.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -38,7 +39,8 @@ import { StarRatingMenuComponent } from './components/star-rating-menu/star-rati
     HttpClientModule,
     NgAisInstantSearchModule.forRoot(),
     NgaisModule,
-    MaterialModule
+    MaterialModule,
+    CloudinaryModule
     // MatButtonModule,
     // MatIconModule
   ],

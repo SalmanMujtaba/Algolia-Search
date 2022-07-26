@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
-import { apiKey, appName } from './../environments/environment';
+import { algoliaApiKey, algoliaAppName } from './../environments/environment';
 
 import { SpinnerService } from './services/spinner.service';
 import algoliasearch from 'algoliasearch';
@@ -20,8 +20,8 @@ export class AppComponent implements OnInit, OnDestroy {
     this.config = {
       indexName: 'restaurants',
       searchClient: algoliasearch(
-        appName,
-        apiKey
+        algoliaAppName,
+        algoliaApiKey
       )
     }
 
