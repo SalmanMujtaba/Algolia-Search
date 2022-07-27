@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Observable, map, startWith, switchMap } from 'rxjs';
 
 import { APP_CONSTANTS } from './../../constants/app-constants';
-import { AlgoliaRecord } from './../../models/hits.model';
+import { AlgoliaRecord } from './../../models/algoliaRecord.model';
 import { ApiServiceService } from './../../services/api-service.service';
 import { SpinnerService } from './../../services/spinner.service';
 

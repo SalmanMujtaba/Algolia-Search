@@ -1,4 +1,4 @@
-import { AlgoliaRecord } from "./hits.model";
+import { AlgoliaRecord } from './algoliaRecord.model';
 
 export interface DialogData {
   hit?: AlgoliaRecord;

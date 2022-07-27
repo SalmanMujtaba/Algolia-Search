@@ -2,7 +2,7 @@ import { Observable, of } from 'rxjs';
 import { algoliaApiKey, algoliaAppName, cloudApiKey, cloudName, cloudUnsignedPreset } from './../../environments/environment';
 
 import { APP_CONSTANTS } from './../constants/app-constants';
-import { AlgoliaRecord } from './../models/hits.model';
+import { AlgoliaRecord } from './../models/algoliaRecord.model';
 import { FileResponse } from './../models/file-upload.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
