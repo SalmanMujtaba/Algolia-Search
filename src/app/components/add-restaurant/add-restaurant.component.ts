@@ -3,6 +3,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Observable, map, startWith } from 'rxjs';
 
 import { APP_CONSTANTS } from './../../constants/app-constants';
+import { ApiServiceService } from './../../services/api-service.service';
+import { Hits } from './../../models/hits.model';
+import { SpinnerService } from './../../services/spinner.service';
 
 @Component({
   selector: 'app-add-restaurant',
@@ -28,7 +31,7 @@ export class AddRestaurantComponent implements OnInit {
   rFoodTypeOptions: Array<string> = APP_CONSTANTS.get("FOOD_TYPE_OPTIONS") as Array<string>;
   // options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]> | undefined;
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, protected apiService: ApiServiceService, protected spinnerService: SpinnerService) {
     this.restaurantAddForm = this.formBuilder.group({
       'rAddressFormControl': new FormControl('', [Validators.required]),
       'rNameFormControl': new FormControl('', [Validators.required]),
@@ -49,21 +52,37 @@ export class AddRestaurantComponent implements OnInit {
     return this.rFoodTypeOptions.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  // add() {
-  //   this.addEvent.emit(1);
-
-  // }
-
   cancel() {
     this.addEvent.emit(1);
 
   }
 
-  onSubmit(value: string) {
+  onSubmit(value: any) {
     this.restaurantAddForm.markAllAsTouched();
+    console.log(value, "---");
     if (this.restaurantAddForm.valid) {
-      this.addEvent.emit(1);
+      const algoliaRecord: Hits = this.createAlgoliaRecord(value);
+      this.apiService.saveObject(algoliaRecord).subscribe({
+        next: (v) => console.log(v, "success"),
+        error: (e) => console.error(e),
+        complete: () => {
+          this.spinnerService.hideSpinner(); this.addEvent.emit(1);
+        }
+      });
 
+    }
+  }
+
+  createAlgoliaRecord(formObject: any): Hits {
+    return {
+      "name": formObject["rNameFormControl"],
+      "address": formObject["rAddressFormControl"],
+      "food_type": formObject["rFoodTypeFormControl"],
+      "price_range": formObject["rPriceFormControl"],
+      "image_url": "http://sample",
+      "stars_count": 0,
+      "reviews_count": 0,
+      "rounded_stars_count": 0
     }
   }
 
