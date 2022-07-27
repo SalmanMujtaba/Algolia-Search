@@ -2,8 +2,8 @@ import { Observable, of } from 'rxjs';
 import { algoliaApiKey, algoliaAppName, cloudApiKey, cloudName, cloudUnsignedPreset } from './../../environments/environment';
 
 import { APP_CONSTANTS } from './../constants/app-constants';
+import { AlgoliaRecord } from './../models/hits.model';
 import { FileResponse } from './../models/file-upload.model';
-import { Hits } from './../models/hits.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SpinnerService } from './spinner.service';
@@ -20,7 +20,7 @@ export class ApiServiceService {
     this.index = algoliasearch(algoliaAppName, algoliaApiKey)?.initIndex(APP_CONSTANTS.get("INDEX_NAME") as string);
   }
 
-  saveObject(algoliaRecord: Hits) {
+  saveObject(algoliaRecord: AlgoliaRecord) {
     this.spinnerService.showSpinner();
     if (algoliaRecord && Object.keys(algoliaRecord).length > 0 && this.index) {
       return of(this.index.saveObject(algoliaRecord, {

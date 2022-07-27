@@ -3,8 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Observable, map, startWith } from 'rxjs';
 
 import { APP_CONSTANTS } from './../../constants/app-constants';
+import { AlgoliaRecord } from './../../models/hits.model';
 import { ApiServiceService } from './../../services/api-service.service';
-import { Hits } from './../../models/hits.model';
 import { SpinnerService } from './../../services/spinner.service';
 
 @Component({
@@ -15,6 +15,7 @@ import { SpinnerService } from './../../services/spinner.service';
 export class AddRestaurantComponent implements OnInit {
   @Output() addEvent = new EventEmitter<number>();
   restaurantAddForm: FormGroup;
+  showError: boolean = false;
   rNameLabel: string = APP_CONSTANTS.get("RESTAURANT_NAME_LABEL") as string;
   rAddressLabel: string = APP_CONSTANTS.get("RESTAURANT_ADDRESS_LABEL") as string;
   rFoodTypeLabel: string = APP_CONSTANTS.get("RESTAURANT_FOOD_TYPE_LABEL") as string;
@@ -60,8 +61,13 @@ export class AddRestaurantComponent implements OnInit {
 
   onSubmit(value: any) {
     this.restaurantAddForm.markAllAsTouched();
+    console.log(this.restaurantAddForm?.get("rImageFormControl"));
+    if (!(this.restaurantAddForm?.get("rImageFormControl")?.value instanceof File)) {
+      this.showError = true;
+      return;
+    }
     if (this.restaurantAddForm.valid) {
-      const algoliaRecord: Hits = this.createAlgoliaRecord(value);
+      const algoliaRecord: AlgoliaRecord = this.createAlgoliaRecord(value);
       this.apiService.saveObject(algoliaRecord).subscribe({
         next: (v) => console.log(v, "success"),
         error: (e) => console.error(e),
@@ -69,11 +75,23 @@ export class AddRestaurantComponent implements OnInit {
           this.spinnerService.hideSpinner(); this.addEvent.emit(1);
         }
       });
-
     }
   }
 
-  createAlgoliaRecord(formObject: any): Hits {
+  onFileChange(event: any) {
+    if (event.target.files && event.target.files.length > 0) {
+      const file = (event.target.files[0] as File);
+      if (file.size > 3000000) {
+        this.showError = true;
+        return;
+      }
+      this.showError = false;
+      this.restaurantAddForm?.get('rImageFormControl')?.setValue(file);
+      console.log(this.restaurantAddForm?.get('rImageFormControl')?.value);
+    }
+  }
+
+  createAlgoliaRecord(formObject: any): AlgoliaRecord {
     return {
       "name": formObject["rNameFormControl"],
       "address": formObject["rAddressFormControl"],

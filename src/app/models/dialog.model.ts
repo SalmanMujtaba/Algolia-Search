@@ -1,7 +1,7 @@
-import { Hits } from "./hits.model";
+import { AlgoliaRecord } from "./hits.model";
 
 export interface DialogData {
-  hit?: Hits;
+  hit?: AlgoliaRecord;
   title: string;
   isAdd?: boolean;
   isRemove?: boolean;

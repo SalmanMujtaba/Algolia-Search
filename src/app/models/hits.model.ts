@@ -1,5 +1,5 @@
 
-export interface Hits {
+export interface AlgoliaRecord {
   name: string;
   address: string;
   image_url?: string;

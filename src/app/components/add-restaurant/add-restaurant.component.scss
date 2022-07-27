@@ -55,3 +55,14 @@ fieldset {
     min-width: 90vw;
   }
 }
+
+.form__upload {}
+
+.mat-error {
+  font-size: 14px;
+}
+
+.form__error {
+  color: $error-color;
+  font-size: 14px;
+}
