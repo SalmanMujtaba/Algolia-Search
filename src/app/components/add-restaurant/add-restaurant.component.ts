@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable, map, startWith } from 'rxjs';
+import { Observable, catchError, map, of, startWith, switchMap, tap } from 'rxjs';
 
 import { APP_CONSTANTS } from './../../constants/app-constants';
 import { AlgoliaRecord } from './../../models/hits.model';
@@ -61,12 +61,25 @@ export class AddRestaurantComponent implements OnInit {
 
   onSubmit(value: any) {
     this.restaurantAddForm.markAllAsTouched();
-    console.log(this.restaurantAddForm?.get("rImageFormControl"));
     if (!(this.restaurantAddForm?.get("rImageFormControl")?.value instanceof File)) {
       this.showError = true;
       return;
     }
     if (this.restaurantAddForm.valid) {
+      this.apiService.uploadFile(this.restaurantAddForm.get("rImageFormControl")?.value)
+        .pipe(
+          tap((res) => { this.spinnerService.showSpinner(); console.log(res, "file response"); }),
+          catchError(err => {
+            return of(err);
+            // To-Do: Handle error
+            // throwError(() => new Error(err));
+          }),
+          switchMap((resonse: any) => {
+            console.log(resonse);
+            const algoliaRecord: AlgoliaRecord = this.createAlgoliaRecord({ ...value, image_url: resonse.url });
+            return this.apiService.saveObject(algoliaRecord);
+          })
+        );
       const algoliaRecord: AlgoliaRecord = this.createAlgoliaRecord(value);
       this.apiService.saveObject(algoliaRecord).subscribe({
         next: (v) => console.log(v, "success"),
@@ -87,7 +100,6 @@ export class AddRestaurantComponent implements OnInit {
       }
       this.showError = false;
       this.restaurantAddForm?.get('rImageFormControl')?.setValue(file);
-      console.log(this.restaurantAddForm?.get('rImageFormControl')?.value);
     }
   }
 
@@ -97,7 +109,7 @@ export class AddRestaurantComponent implements OnInit {
       "address": formObject["rAddressFormControl"],
       "food_type": formObject["rFoodTypeFormControl"],
       "price_range": formObject["rPriceFormControl"],
-      "image_url": "http://sample",
+      "image_url": formObject["image_url"],
       "stars_count": 0,
       "reviews_count": 0,
       "rounded_stars_count": 0

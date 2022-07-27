@@ -42,8 +42,11 @@ export class ApiServiceService {
     this.spinnerService.showSpinner();
     console.log(file);
     if (file) {
-      return this.http.post<FileResponse>(this.uploadURL, { file, api_key: cloudApiKey, upload_preset: cloudUnsignedPreset });
-
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('upload_preset', cloudUnsignedPreset);
+      formData.append('api_key', cloudApiKey);
+      return this.http.post<FileResponse>(this.uploadURL, formData);
     }
     return of("Error in uploading the file");
   }
