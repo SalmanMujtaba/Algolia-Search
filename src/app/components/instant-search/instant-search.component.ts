@@ -24,11 +24,12 @@ export class InstantSearchComponent implements OnInit, AfterViewInit {
   add() {
     this.isAdd = true;
     this.toggleMenu();
+    this.toggleTopButton.emit(this.isOpen);
   }
 
   toggleMenu() {
     this.isOpen = !this.isOpen;
-    this.toggleTopButton.emit(this.isOpen);
+    // this.toggleTopButton.emit(this.isOpen);
 
   }
 

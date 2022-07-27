@@ -3,5 +3,5 @@
 <div mat-dialog-actions>
   <button (click)=dialogRef.close(deleteArgument) class="primary-button" *ngIf="data.isRemove" mat-dialog-close>{{deleteButtonLabel}}</button>
   <button (click)=dialogRef.close(addArgument) class="primary-button" *ngIf="data.isAdd" mat-dialog-close>{{addButtonLabel}}</button>
-  <button (click)=dialogRef.close(cancelArgument) mat-button mat-dialog-close>{{cancelButtonLabel}}</button>
+  <button (click)=dialogRef.close(cancelArgument) mat-raised-button mat-dialog-close>{{cancelButtonLabel}}</button>
 </div>
