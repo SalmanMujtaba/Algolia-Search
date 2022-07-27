@@ -8,7 +8,6 @@ export interface Hits {
   stars_count: number;
   reviews_count: number;
   price_range: string;
-  dining_style: string;
   rounded_stars_count: number;
   objectID: string;
 }

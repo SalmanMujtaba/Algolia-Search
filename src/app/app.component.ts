@@ -23,7 +23,8 @@ export class AppComponent implements OnInit, OnDestroy {
         algoliaAppName,
         algoliaApiKey
       )
-    }
+    };
+
 
   }
   ngOnInit(): void {

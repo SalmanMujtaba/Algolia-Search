@@ -8,6 +8,9 @@ import { AfterViewInit, Component, EventEmitter, Inject, Input, OnInit, Output }
 })
 export class InstantSearchComponent implements OnInit, AfterViewInit {
   @Input() config: any;
+  isOpen: boolean = false;
+  isAdd: boolean = false;
+
   @Output() toggleSpinner = new EventEmitter<boolean>();
   constructor(@Inject(DOCUMENT) private document: Document) { }
 
@@ -19,5 +22,16 @@ export class InstantSearchComponent implements OnInit, AfterViewInit {
 
   }
   add() {
+    this.isAdd = true;
+    this.toggleMenu();
+  }
+
+  toggleMenu() {
+    this.isOpen = !this.isOpen;
+  }
+
+  addrestaurant(event: any) {
+    this.isAdd = false;
+    this.isOpen = false;
   }
 }

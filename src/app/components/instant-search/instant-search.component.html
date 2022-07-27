@@ -1,8 +1,19 @@
 <div>
-  <header>
-    <h1 class="text-align-center white">Restaurants</h1>
+  <header class="header">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <button (click)="toggleMenu()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <h1>Restaurants</h1>
+      </mat-toolbar-row>
+      <mat-toolbar-row tabindex="0" aria-describedby="restaurant__add-id" class="header__add" [ngClass]="{'hide': !isOpen}">
+        <div role="button" id="restaurant__add-id" aria-label="Add restaurant menu item" (click)="add()">Add a Restaurant
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
   </header>
-  <ais-instantsearch class="panels" [config]="config">
+  <ais-instantsearch *ngIf="!isAdd" class="panels" [config]="config">
     <aside class="panels__left animate__animated animate__slideInLeft animation-delay-2s">
       <app-refinements></app-refinements>
       <ais-configure [searchParameters]="{ hitsPerPage: 8 }"></ais-configure>
@@ -12,7 +23,7 @@
     <main class="panels__right">
       <app-search-box></app-search-box>
       <app-hits></app-hits>
-      <!-- <ais-pagination></ais-pagination> -->
     </main>
   </ais-instantsearch>
+  <app-add-restaurant (addEvent)="addrestaurant($event)" *ngIf="isAdd"></app-add-restaurant>
 </div>

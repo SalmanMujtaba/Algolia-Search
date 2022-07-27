@@ -1,5 +1,7 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { AddRestaurantComponent } from './components/add-restaurant/add-restaurant.component';
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CloudinaryModule } from '@cloudinary/ng';
@@ -17,6 +19,31 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { StarComponent } from './components/star/star.component';
 import { StarRatingMenuComponent } from './components/star-rating-menu/star-rating-menu.component';
 
+// const routes: Routes = [
+
+//   {
+//     path: 'restaurants',
+//     component: InstantSearchComponent,
+//     title: 'Algolia Restaurant Search',
+//     children: [
+//       {
+//         path: 'add',
+//         title: 'Algolia Restaurant Add', // child route path
+//         component: AddRestaurantComponent, // child route component that the router renders
+//       },
+//     ]
+//   },
+//   {
+//     path: "",
+//     redirectTo: 'InstantSearchComponent',
+//     pathMatch: 'full'
+//   },
+//   {
+//     path: "**",
+//     redirectTo: '/'
+//   }
+// ];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,23 +55,24 @@ import { StarRatingMenuComponent } from './components/star-rating-menu/star-rati
     DialogComponent,
     StarRatingMenuComponent,
     StarRatingMenuComponent,
-    SpinnerComponent
-
+    SpinnerComponent,
+    AddRestaurantComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    BrowserModule,
+    FormsModule,
+    // MatFormFieldModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgAisInstantSearchModule.forRoot(),
     NgaisModule,
     MaterialModule,
-    CloudinaryModule
-    // MatButtonModule,
-    // MatIconModule
+    CloudinaryModule,
+    // RouterModule.forRoot(routes)
   ],
   providers: [],
+  entryComponents: [DialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

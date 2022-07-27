@@ -1,0 +1,52 @@
+<div class="form__container">
+  <mat-card>
+    <form [formGroup]="restaurantAddForm" (ngSubmit)="onSubmit(restaurantAddForm.value)">
+      <mat-form-field appearance="standard">
+        <mat-label>{{rNameLabel}}</mat-label>
+        <input type="text" maxlength="30" formControlName="rNameFormControl" matInput>
+        <mat-error *ngIf="!restaurantAddForm.controls['rNameFormControl'].valid && restaurantAddForm.controls['rNameFormControl'].touched">
+          {{rNameErrorMsg}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
+        <mat-label>{{rAddressLabel}}</mat-label>
+        <input type="text" maxlength="30" formControlName="rAddressFormControl" matInput>
+        <mat-error *ngIf="!restaurantAddForm.controls['rAddressFormControl'].valid && restaurantAddForm.controls['rAddressFormControl'].touched">
+          {{rAdddressErrorMsg}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="standard">
+        <mat-label>{{rFoodTypeLabel}}</mat-label>
+        <input type="text" placeholder="Look for the food type from the list" aria-label="Enter food type" matInput formControlName="rFoodTypeFormControl" [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+        <mat-error *ngIf="!restaurantAddForm.controls['rFoodTypeFormControl'].valid && restaurantAddForm.controls['rFoodTypeFormControl'].touched">
+          {{rFoodTypeErrorMsg}}
+        </mat-error>
+      </mat-form-field>
+
+      <fieldset>
+
+        <legend>{{rPriceLegend}}</legend>
+        <mat-radio-group color="primary" aria-label="Select an option" class="form__radio" formControlName="rPriceFormControl">
+          <mat-radio-button [value]="rPriceUnder30">{{rPriceUnder30}}</mat-radio-button>
+          <mat-radio-button [value]="rPriceInBetween">{{rPriceInBetween}}</mat-radio-button>
+          <mat-radio-button [value]="rPriceOver50">{{rPriceOver50}}</mat-radio-button>
+        </mat-radio-group>
+      </fieldset>
+
+
+      <div class="form__submit">
+        <button (click)="add()" class="primary-button" type="submit" mat-raised-button color="primary">Add
+          Restaurant</button>
+        <button (click)="cancel()" mat-raised-button>Cancel</button>
+      </div>
+    </form>
+
+  </mat-card>
+</div>
