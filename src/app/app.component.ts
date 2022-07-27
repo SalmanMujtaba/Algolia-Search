@@ -46,7 +46,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   showToggleButton(event: boolean) {
     this.showTopButton = event;
-    console.log(this.showTopButton)
   }
 
 

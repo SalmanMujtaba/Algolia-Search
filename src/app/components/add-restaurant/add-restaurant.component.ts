@@ -36,7 +36,8 @@ export class AddRestaurantComponent implements OnInit {
       'rAddressFormControl': new FormControl('', [Validators.required]),
       'rNameFormControl': new FormControl('', [Validators.required]),
       'rFoodTypeFormControl': new FormControl('', [Validators.required]),
-      'rPriceFormControl': new FormControl(this.rPriceUnder30)
+      'rPriceFormControl': new FormControl(this.rPriceUnder30),
+      'rImageFormControl': new FormControl([Validators.required])
     });
   }
 
@@ -59,7 +60,6 @@ export class AddRestaurantComponent implements OnInit {
 
   onSubmit(value: any) {
     this.restaurantAddForm.markAllAsTouched();
-    console.log(value, "---");
     if (this.restaurantAddForm.valid) {
       const algoliaRecord: Hits = this.createAlgoliaRecord(value);
       this.apiService.saveObject(algoliaRecord).subscribe({

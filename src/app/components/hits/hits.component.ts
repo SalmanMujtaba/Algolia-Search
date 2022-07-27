@@ -67,7 +67,6 @@ export class HitsComponent implements OnInit {
 
   remove(allHits: Hit[]) {
     allHits = allHits.filter((hit: Hit) => hit.objectID !== this.current!.objectID);
-    console.log(allHits);
   }
 
   trackByIdentity(index: number, item: Hit): number {
