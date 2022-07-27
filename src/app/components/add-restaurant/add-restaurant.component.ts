@@ -77,16 +77,9 @@ export class AddRestaurantComponent implements OnInit {
           next: (res) => {
             this.spinnerService.hideSpinner();
             console.log(res);
+            this.addEvent.emit(1);
           }
         });
-      const algoliaRecord: AlgoliaRecord = this.createAlgoliaRecord(value);
-      this.apiService.saveObject(algoliaRecord).subscribe({
-        next: (v) => console.log(v, "success"),
-        error: (e) => console.error(e),
-        complete: () => {
-          this.spinnerService.hideSpinner(); this.addEvent.emit(1);
-        }
-      });
     }
   }
 

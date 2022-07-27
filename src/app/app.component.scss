@@ -12,3 +12,10 @@
     transform: scale(1.2);
   }
 }
+
+.mat-spinner {
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  position: absolute;
+}
