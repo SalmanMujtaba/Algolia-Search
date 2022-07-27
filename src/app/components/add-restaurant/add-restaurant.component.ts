@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable, catchError, map, of, startWith, switchMap, tap } from 'rxjs';
+import { Observable, map, startWith, switchMap } from 'rxjs';
 
 import { APP_CONSTANTS } from './../../constants/app-constants';
 import { AlgoliaRecord } from './../../models/hits.model';
@@ -68,18 +68,17 @@ export class AddRestaurantComponent implements OnInit {
     if (this.restaurantAddForm.valid) {
       this.apiService.uploadFile(this.restaurantAddForm.get("rImageFormControl")?.value)
         .pipe(
-          tap((res) => { this.spinnerService.showSpinner(); console.log(res, "file response"); }),
-          catchError(err => {
-            return of(err);
-            // To-Do: Handle error
-            // throwError(() => new Error(err));
-          }),
-          switchMap((resonse: any) => {
-            console.log(resonse);
+          switchMap(resonse => {
+            console.log(resonse, "firsto nlu");
             const algoliaRecord: AlgoliaRecord = this.createAlgoliaRecord({ ...value, image_url: resonse.url });
             return this.apiService.saveObject(algoliaRecord);
           })
-        );
+        ).subscribe({
+          next: (res) => {
+            this.spinnerService.hideSpinner();
+            console.log(res);
+          }
+        });
       const algoliaRecord: AlgoliaRecord = this.createAlgoliaRecord(value);
       this.apiService.saveObject(algoliaRecord).subscribe({
         next: (v) => console.log(v, "success"),

@@ -38,7 +38,7 @@ export class ApiServiceService {
     return of("Object ID is empty");
   }
 
-  uploadFile(file: any): Observable<FileResponse | string> {
+  uploadFile(file: any): Observable<FileResponse | any> {
     this.spinnerService.showSpinner();
     console.log(file);
     if (file) {
