@@ -1,5 +1,5 @@
-<app-instant-search id="top" [config]="config"></app-instant-search>
-<button matTooltip="Move to top" class="top" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+<app-instant-search (toggleTopButton)="showToggleButton($event)" id="top" [config]="config"></app-instant-search>
+<button *ngIf="showTopButton" matTooltip="Move to top" class="top" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
   <a href="#top">
     <mat-icon>arrow_upward</mat-icon>
   </a>

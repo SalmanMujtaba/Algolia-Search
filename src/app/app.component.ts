@@ -14,6 +14,7 @@ export class AppComponent implements OnInit, OnDestroy {
   title = 'algolia';
   config: any;
   showSpinner: boolean = false;
+  showTopButton: boolean = true;
   private readonly destroy$ = new Subject();
 
   constructor(protected spinnerService: SpinnerService) {
@@ -41,6 +42,11 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next(false);
     this.destroy$.complete();
+  }
+
+  showToggleButton(event: boolean) {
+    this.showTopButton = event;
+    console.log(this.showTopButton)
   }
 
 

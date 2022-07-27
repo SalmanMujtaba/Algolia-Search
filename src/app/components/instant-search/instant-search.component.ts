@@ -11,7 +11,7 @@ export class InstantSearchComponent implements OnInit, AfterViewInit {
   isOpen: boolean = false;
   isAdd: boolean = false;
 
-  @Output() toggleSpinner = new EventEmitter<boolean>();
+  @Output() toggleTopButton = new EventEmitter<boolean>();
   constructor(@Inject(DOCUMENT) private document: Document) { }
 
 
@@ -28,10 +28,14 @@ export class InstantSearchComponent implements OnInit, AfterViewInit {
 
   toggleMenu() {
     this.isOpen = !this.isOpen;
+    this.toggleTopButton.emit(this.isOpen);
+
   }
 
   addrestaurant(event: any) {
     this.isAdd = false;
     this.isOpen = false;
+    this.toggleTopButton.emit(true);
+
   }
 }

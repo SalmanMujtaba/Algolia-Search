@@ -49,10 +49,10 @@ export class AddRestaurantComponent implements OnInit {
     return this.rFoodTypeOptions.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  add() {
-    this.addEvent.emit(1);
+  // add() {
+  //   this.addEvent.emit(1);
 
-  }
+  // }
 
   cancel() {
     this.addEvent.emit(1);
@@ -62,7 +62,8 @@ export class AddRestaurantComponent implements OnInit {
   onSubmit(value: string) {
     this.restaurantAddForm.markAllAsTouched();
     if (this.restaurantAddForm.valid) {
-      // this.formValue.emit(value);
+      this.addEvent.emit(1);
+
     }
   }
 
