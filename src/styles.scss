@@ -10,6 +10,13 @@ body {
   scroll-behavior: smooth;
 }
 
+* {
+  &:focus {
+    outline: 0.125rem solid rgb(12, 11, 49) !important;
+    outline-offset: 0.125rem;
+  }
+}
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif !important;
